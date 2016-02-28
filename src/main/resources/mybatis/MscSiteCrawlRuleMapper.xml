@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="nju.msc.dao.MscSiteCrawlRuleMapper" >
+  <resultMap id="BaseResultMap" type="nju.msc.domain.MscSiteCrawlRule" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="msc_site_id" property="mscSiteId" jdbcType="INTEGER" />
+    <result column="next_page_url_ptn" property="nextPageUrlPtn" jdbcType="VARCHAR" />
+    <result column="detail_page_url_ptn" property="detailPageUrlPtn" jdbcType="VARCHAR" />
+    <result column="download_url_ptn" property="downloadUrlPtn" jdbcType="VARCHAR" />
+    <result column="mv_name_ptn" property="mvNamePtn" jdbcType="VARCHAR" />
+    <result column="mv_chinese_name_ptn" property="mvChineseNamePtn" jdbcType="VARCHAR" />
+    <result column="mv_director_ptn" property="mvDirectorPtn" jdbcType="VARCHAR" />
+    <result column="mv_country_ptn" property="mvCountryPtn" jdbcType="VARCHAR" />
+    <result column="mv_casting_ptn" property="mvCastingPtn" jdbcType="VARCHAR" />
+    <result column="mv_release_date_ptn" property="mvReleaseDatePtn" jdbcType="VARCHAR" />
+    <result column="mv_douban_rating_ptn" property="mvDoubanRatingPtn" jdbcType="VARCHAR" />
+    <result column="mv_imdb_rating_ptn" property="mvImdbRatingPtn" jdbcType="VARCHAR" />
+    <result column="mv_douban_rul_ptn" property="mvDoubanRulPtn" jdbcType="VARCHAR" />
+    <result column="mv_poster_url_ptn" property="mvPosterUrlPtn" jdbcType="VARCHAR" />
+    <result column="upload_date_ptn" property="uploadDatePtn" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="utime" property="utime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msc_site_id, next_page_url_ptn, detail_page_url_ptn, download_url_ptn, mv_name_ptn, 
+    mv_chinese_name_ptn, mv_director_ptn, mv_country_ptn, mv_casting_ptn, mv_release_date_ptn, 
+    mv_douban_rating_ptn, mv_imdb_rating_ptn, mv_douban_rul_ptn, mv_poster_url_ptn, upload_date_ptn, 
+    ctime, utime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msc_site_crawl_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msc_site_crawl_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="nju.msc.domain.MscSiteCrawlRule" >
+    insert into msc_site_crawl_rule (id, msc_site_id, next_page_url_ptn, 
+      detail_page_url_ptn, download_url_ptn, mv_name_ptn, 
+      mv_chinese_name_ptn, mv_director_ptn, mv_country_ptn, 
+      mv_casting_ptn, mv_release_date_ptn, mv_douban_rating_ptn, 
+      mv_imdb_rating_ptn, mv_douban_rul_ptn, mv_poster_url_ptn, 
+      upload_date_ptn, ctime, utime
+      )
+    values (#{id,jdbcType=INTEGER}, #{mscSiteId,jdbcType=INTEGER}, #{nextPageUrlPtn,jdbcType=VARCHAR}, 
+      #{detailPageUrlPtn,jdbcType=VARCHAR}, #{downloadUrlPtn,jdbcType=VARCHAR}, #{mvNamePtn,jdbcType=VARCHAR}, 
+      #{mvChineseNamePtn,jdbcType=VARCHAR}, #{mvDirectorPtn,jdbcType=VARCHAR}, #{mvCountryPtn,jdbcType=VARCHAR}, 
+      #{mvCastingPtn,jdbcType=VARCHAR}, #{mvReleaseDatePtn,jdbcType=VARCHAR}, #{mvDoubanRatingPtn,jdbcType=VARCHAR}, 
+      #{mvImdbRatingPtn,jdbcType=VARCHAR}, #{mvDoubanRulPtn,jdbcType=VARCHAR}, #{mvPosterUrlPtn,jdbcType=VARCHAR}, 
+      #{uploadDatePtn,jdbcType=VARCHAR}, #{ctime,jdbcType=INTEGER}, #{utime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="nju.msc.domain.MscSiteCrawlRule" >
+    insert into msc_site_crawl_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mscSiteId != null" >
+        msc_site_id,
+      </if>
+      <if test="nextPageUrlPtn != null" >
+        next_page_url_ptn,
+      </if>
+      <if test="detailPageUrlPtn != null" >
+        detail_page_url_ptn,
+      </if>
+      <if test="downloadUrlPtn != null" >
+        download_url_ptn,
+      </if>
+      <if test="mvNamePtn != null" >
+        mv_name_ptn,
+      </if>
+      <if test="mvChineseNamePtn != null" >
+        mv_chinese_name_ptn,
+      </if>
+      <if test="mvDirectorPtn != null" >
+        mv_director_ptn,
+      </if>
+      <if test="mvCountryPtn != null" >
+        mv_country_ptn,
+      </if>
+      <if test="mvCastingPtn != null" >
+        mv_casting_ptn,
+      </if>
+      <if test="mvReleaseDatePtn != null" >
+        mv_release_date_ptn,
+      </if>
+      <if test="mvDoubanRatingPtn != null" >
+        mv_douban_rating_ptn,
+      </if>
+      <if test="mvImdbRatingPtn != null" >
+        mv_imdb_rating_ptn,
+      </if>
+      <if test="mvDoubanRulPtn != null" >
+        mv_douban_rul_ptn,
+      </if>
+      <if test="mvPosterUrlPtn != null" >
+        mv_poster_url_ptn,
+      </if>
+      <if test="uploadDatePtn != null" >
+        upload_date_ptn,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="utime != null" >
+        utime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mscSiteId != null" >
+        #{mscSiteId,jdbcType=INTEGER},
+      </if>
+      <if test="nextPageUrlPtn != null" >
+        #{nextPageUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageUrlPtn != null" >
+        #{detailPageUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrlPtn != null" >
+        #{downloadUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvNamePtn != null" >
+        #{mvNamePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvChineseNamePtn != null" >
+        #{mvChineseNamePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDirectorPtn != null" >
+        #{mvDirectorPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvCountryPtn != null" >
+        #{mvCountryPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvCastingPtn != null" >
+        #{mvCastingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvReleaseDatePtn != null" >
+        #{mvReleaseDatePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDoubanRatingPtn != null" >
+        #{mvDoubanRatingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvImdbRatingPtn != null" >
+        #{mvImdbRatingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDoubanRulPtn != null" >
+        #{mvDoubanRulPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvPosterUrlPtn != null" >
+        #{mvPosterUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDatePtn != null" >
+        #{uploadDatePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="utime != null" >
+        #{utime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="nju.msc.domain.MscSiteCrawlRule" >
+    update msc_site_crawl_rule
+    <set >
+      <if test="mscSiteId != null" >
+        msc_site_id = #{mscSiteId,jdbcType=INTEGER},
+      </if>
+      <if test="nextPageUrlPtn != null" >
+        next_page_url_ptn = #{nextPageUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPageUrlPtn != null" >
+        detail_page_url_ptn = #{detailPageUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrlPtn != null" >
+        download_url_ptn = #{downloadUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvNamePtn != null" >
+        mv_name_ptn = #{mvNamePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvChineseNamePtn != null" >
+        mv_chinese_name_ptn = #{mvChineseNamePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDirectorPtn != null" >
+        mv_director_ptn = #{mvDirectorPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvCountryPtn != null" >
+        mv_country_ptn = #{mvCountryPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvCastingPtn != null" >
+        mv_casting_ptn = #{mvCastingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvReleaseDatePtn != null" >
+        mv_release_date_ptn = #{mvReleaseDatePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDoubanRatingPtn != null" >
+        mv_douban_rating_ptn = #{mvDoubanRatingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvImdbRatingPtn != null" >
+        mv_imdb_rating_ptn = #{mvImdbRatingPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvDoubanRulPtn != null" >
+        mv_douban_rul_ptn = #{mvDoubanRulPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="mvPosterUrlPtn != null" >
+        mv_poster_url_ptn = #{mvPosterUrlPtn,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDatePtn != null" >
+        upload_date_ptn = #{uploadDatePtn,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="utime != null" >
+        utime = #{utime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="nju.msc.domain.MscSiteCrawlRule" >
+    update msc_site_crawl_rule
+    set msc_site_id = #{mscSiteId,jdbcType=INTEGER},
+      next_page_url_ptn = #{nextPageUrlPtn,jdbcType=VARCHAR},
+      detail_page_url_ptn = #{detailPageUrlPtn,jdbcType=VARCHAR},
+      download_url_ptn = #{downloadUrlPtn,jdbcType=VARCHAR},
+      mv_name_ptn = #{mvNamePtn,jdbcType=VARCHAR},
+      mv_chinese_name_ptn = #{mvChineseNamePtn,jdbcType=VARCHAR},
+      mv_director_ptn = #{mvDirectorPtn,jdbcType=VARCHAR},
+      mv_country_ptn = #{mvCountryPtn,jdbcType=VARCHAR},
+      mv_casting_ptn = #{mvCastingPtn,jdbcType=VARCHAR},
+      mv_release_date_ptn = #{mvReleaseDatePtn,jdbcType=VARCHAR},
+      mv_douban_rating_ptn = #{mvDoubanRatingPtn,jdbcType=VARCHAR},
+      mv_imdb_rating_ptn = #{mvImdbRatingPtn,jdbcType=VARCHAR},
+      mv_douban_rul_ptn = #{mvDoubanRulPtn,jdbcType=VARCHAR},
+      mv_poster_url_ptn = #{mvPosterUrlPtn,jdbcType=VARCHAR},
+      upload_date_ptn = #{uploadDatePtn,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      utime = #{utime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
